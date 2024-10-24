@@ -3,12 +3,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: zookeeper-app
-  namespace: argocd
+  namespace: argocd-dev
 spec:
   project: default
   source:
     repoURL: 'https://github.com/georgezefko/kubernetes-roadmap.git'
-    targetRevision: HEAD
+    targetRevision: main
     path: zookeeper/dev
   destination:
     server: 'https://kubernetes.default.svc'
