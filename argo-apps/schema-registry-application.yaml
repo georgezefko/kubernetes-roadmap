@@ -3,16 +3,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: schema-registry-app
-  namespace: argocd-dev
+  namespace: develop
 spec:
   project: default
   source:
     repoURL: 'https://github.com/georgezefko/kubernetes-roadmap.git'
-    targetRevision: main
+    targetRevision: HEAD
     path: kafka-schema-registry/dev
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: mage-dev
+    namespace: develop
   syncPolicy:
     automated:
       prune: true
