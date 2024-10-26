@@ -81,3 +81,7 @@ kubectl cp client.properties kafka-client:/tmp/client.properties --namespace def
 
 ##get kafka values
 helm show values bitnami/kafka > values.yaml
+
+
+###argo port forward
+kubectl port-forward svc/argocd-server -n argocd-dev 8080:80

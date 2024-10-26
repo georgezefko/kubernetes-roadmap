@@ -3,16 +3,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: kafka-app
-  namespace: argocd-dev
+  namespace: develop
 spec:
   project: default
   source:
     repoURL: 'https://github.com/georgezefko/kubernetes-roadmap.git'
-    targetRevision: main  # Use the branch or commit you want ArgoCD to track
+    targetRevision: HEAD  # Use the branch or commit you want ArgoCD to track
     path: kafka/dev       # Path to the dev folder in the Kafka component
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: mage-dev   # Namespace where Kafka will be deployed
+    namespace: develop   # Namespace where Kafka will be deployed
   syncPolicy:
     automated:
       prune: true        # Optionally, ArgoCD can prune resources that are not in Git

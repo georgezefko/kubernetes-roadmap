@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: schema-registry
-  namespace: mage-dev
+  namespace: develop
   labels:
     app: schema-registry-app
 spec:
@@ -24,10 +24,10 @@ spec:
             - name: SCHEMA_REGISTRY_HOST_NAME
               value: 'schema-registry-svc'
             - name: SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL
-              value: 'zookeeper-svc.mage-dev.svc.cluster.local:2181'
+              value: 'zookeeper-svc.develop.svc.cluster.local:2181'
             - name: SCHEMA_REGISTRY_LISTENERS
               value: 'http://0.0.0.0:8081'
             - name: SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS
-              value: 'PLAINTEXT://kafka-svc.mage-dev.svc.cluster.local:9093'
+              value: 'PLAINTEXT://kafka-svc.develop.svc.cluster.local:9093'
             - name: SCHEMA_REGISTRY_DEBUG
               value: 'true'
