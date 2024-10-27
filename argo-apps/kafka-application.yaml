@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: 'https://github.com/georgezefko/kubernetes-roadmap.git'
     targetRevision: HEAD  # Use the branch or commit you want ArgoCD to track
-    path: kafka/dev       # Path to the dev folder in the Kafka component
+    path: apps/kafka/dev       # Path to the dev folder in the Kafka component
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: develop   # Namespace where Kafka will be deployed
