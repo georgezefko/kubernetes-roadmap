@@ -205,3 +205,9 @@ rules:
       - get
       - list
       - watch
+  - apiGroups: ["flowcontrol.apiserver.k8s.io"]
+    resources: ["prioritylevelconfigurations"]
+    verbs: ["list", "get", "watch"]
+  - apiGroups: [""]
+    resources: ["resourcequotas"]
+    verbs: ["list", "get", "watch"]
