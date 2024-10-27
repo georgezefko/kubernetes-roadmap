@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: 'https://github.com/georgezefko/kubernetes-roadmap.git'
     targetRevision: HEAD
-    path: kafka-schema-registry/dev
+    path: apps/kafka-schema-registry/dev
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: develop

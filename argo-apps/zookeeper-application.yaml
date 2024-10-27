@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: 'https://github.com/georgezefko/kubernetes-roadmap.git'
     targetRevision: HEAD
-    path: zookeeper/dev
+    path: apps/zookeeper/dev
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: develop
