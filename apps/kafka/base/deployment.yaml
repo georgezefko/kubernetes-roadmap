@@ -14,7 +14,7 @@ spec:
   template:
     metadata:
       labels:
-        app: kafka-app
+        app: kafka-apps
     spec:
       containers:
         - name: kafka-container
