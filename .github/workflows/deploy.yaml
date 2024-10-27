@@ -14,11 +14,18 @@ jobs:
     steps:
       - name: Check out the code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Ensures full Git history is available
 
       - name: Identify Changed Application Directories
         id: changes
         run: |
-          CHANGED_DIRS=$(git diff --name-only HEAD~1 HEAD | grep '^apps/' | cut -d'/' -f1-2 | sort -u)
+          # Ensure we have all branches and commits in case of shallow fetch
+          git fetch --no-tags --prune --unshallow || true
+          
+          # Find changed directories or list all under apps if no previous commit is available
+          CHANGED_DIRS=$(git diff --name-only HEAD~1 HEAD 2>/dev/null | grep '^apps/' | cut -d'/' -f1-2 | sort -u || find apps -type d -mindepth 1 -maxdepth 1)
+          
           echo "changed_dirs=$CHANGED_DIRS" >> $GITHUB_ENV
         shell: bash
 
