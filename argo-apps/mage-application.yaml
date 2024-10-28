@@ -2,20 +2,23 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: mage-ai
-  namespace: argocd
+  namespace: argocd  # Namespace where Argo CD is installed, usually `argocd`
 spec:
   project: default
 
   source:
-    repoURL: 'https://github.com/georgezefko/kubernetes-roadmap.git'
-    targetRevision: HEAD
-    path: apps/mage-ai/dev  # Point to the dev overlay
+    repoURL: https://mage-ai.github.io/helm-charts  # Direct link to Mage AI Helm repo
+    chart: mageai
+    targetRevision: latest  # Specify a version if needed
+    helm:
+      valueFiles:
+        - apps/mage/dev/values.yaml  # Path to your dev-specific values file, if using overlays
 
   destination:
-    server: https://kubernetes.default.svc
-    namespace: develop  # Define the namespace where you want Mage AI deployed
+    server: https://kubernetes.default.svc  # This points to the in-cluster Kubernetes API
+    namespace: mage-ai  # The namespace where you want Mage AI deployed
 
   syncPolicy:
     automated:
-      prune: true
-      selfHeal: true
+      prune: true  # Automatically remove resources no longer in the chart
+      selfHeal: true  # Automatically apply changes in the chart
