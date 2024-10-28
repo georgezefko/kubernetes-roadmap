@@ -10,9 +10,10 @@ spec:
     repoURL: https://mage-ai.github.io/helm-charts  # Direct link to Mage AI Helm repo
     chart: mageai
     targetRevision: 0.2.6  # Specify a version if needed
+    path: apps/mage-ai/dev/
     helm:
       valueFiles:
-        - apps/mage-ai/dev/values.yaml  # Path to your dev-specific values file, if using overlays
+        - values.yaml  # Path to your dev-specific values file, if using overlays
 
   destination:
     server: https://kubernetes.default.svc  # This points to the in-cluster Kubernetes API
