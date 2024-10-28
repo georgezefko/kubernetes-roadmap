@@ -17,7 +17,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc  # This points to the in-cluster Kubernetes API
-    namespace: mage-ai  # The namespace where you want Mage AI deployed
+    namespace: develop
 
   syncPolicy:
     automated:
