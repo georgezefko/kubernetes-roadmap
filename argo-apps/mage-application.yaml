@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mage-ai
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: 'https://github.com/georgezefko/kubernetes-roadmap.git'
+    targetRevision: HEAD
+    path: apps/mage-ai/dev  # Point to the dev overlay
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: develop  # Define the namespace where you want Mage AI deployed
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
