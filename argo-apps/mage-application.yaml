@@ -12,7 +12,7 @@ spec:
     targetRevision: 0.2.6  # Specify a version if needed
     helm:
       valueFiles:
-        - apps/mage/dev/values.yaml  # Path to your dev-specific values file, if using overlays
+        - apps/mage-ai/dev/values.yaml  # Path to your dev-specific values file, if using overlays
 
   destination:
     server: https://kubernetes.default.svc  # This points to the in-cluster Kubernetes API
