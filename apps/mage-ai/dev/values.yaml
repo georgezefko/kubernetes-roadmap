@@ -205,7 +205,7 @@ existingSecret: ""
 # Consider using a secret manager first, before sourcing secrets as environment variables.
 secrets: {}
 
-# extraEnvs: Extra environment variables
+# extraEnvs: Extra environment variable
 extraEnvs:
   - name: KUBE_NAMESPACE
     valueFrom:
