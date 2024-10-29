@@ -85,5 +85,6 @@ helm show values bitnami/kafka > values.yaml
 
 ###argo port forward
 kubectl port-forward svc/argocd-server -n argocd-dev 8080:80
+kubectl port-forward svc/argocd-server -n argocd 8080:443
 ###install ingress
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
