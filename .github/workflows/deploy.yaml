@@ -49,8 +49,8 @@ jobs:
           argocd login ${{ secrets.ARGOCD_SERVER }} --username ${{ secrets.ARGOCD_USERNAME }} --password ${{ secrets.ARGOCD_PASSWORD }} --insecure
         env:
           ARGOCD_SERVER: ${{ secrets.ARGOCD_SERVER }}
-          ARGOCD_USERNAME: ${{ secrets.ARGOCD_USERNAME }}
-          ARGOCD_PASSWORD: ${{ secrets.ARGOCD_PASSWORD }}
+          ARGOCD_USERNAME: admin ##${{ secrets.ARGOCD_USERNAME }}
+          ARGOCD_PASSWORD: p2pA5F4X2KXhsFTT% ##${{ secrets.ARGOCD_PASSWORD }}
 
       - name: Sync Only Changed Argo CD Applications
         if: ${{ env.changed_dirs }}
