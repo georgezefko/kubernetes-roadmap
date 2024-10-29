@@ -14,6 +14,19 @@ spec:
     helm:
       valueFiles:
         - values.yaml  # Path to your dev-specific values file, if using overlays
+      parameters:
+        - name: service.type
+          value: ClusterIP
+        - name: ingress.enabled
+          value: "true"
+        - name: ingress.hosts[0].host
+          value: mage.local
+        - name: ingress.hosts[0].paths[0].path
+          value: /
+        - name: ingress.hosts[0].paths[0].pathType
+          value: Prefix
+        - name: ingress.annotations.nginx.ingress.kubernetes.io/rewrite-target
+          value: /
 
   destination:
     server: https://kubernetes.default.svc  # This points to the in-cluster Kubernetes API
