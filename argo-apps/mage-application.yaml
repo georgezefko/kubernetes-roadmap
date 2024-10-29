@@ -52,7 +52,7 @@ spec:
     targetRevision: 0.2.6  # Version of the Mage AI chart
     helm:
       valueFiles:
-        - apps/mage-ai/dev/values.yaml
+        - https://raw.githubusercontent.com/georgezefko/kubernetes-roadmap/main/apps/mage-ai/dev/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: develop
