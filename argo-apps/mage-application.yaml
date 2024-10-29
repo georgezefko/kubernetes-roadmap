@@ -7,26 +7,26 @@ spec:
   project: default
 
   source:
-    repoURL: https://mage-ai.github.io/helm-charts  # Direct link to Mage AI Helm repo
-    chart: mageai
-    targetRevision: 0.2.6  # Specify a version if needed
+    repoURL: 'https://github.com/georgezefko/kubernetes-roadmap.git'  # Direct link to Mage AI Helm repo
+    targetRevision: HEAD
+ 
     path: apps/mage-ai/dev/
     helm:
       valueFiles:
         - values.yaml  # Path to your dev-specific values file, if using overlays
-      parameters:
-        - name: service.type
-          value: ClusterIP
-        - name: ingress.enabled
-          value: "true"
-        - name: ingress.hosts[0].host
-          value: mage.local
-        - name: ingress.hosts[0].paths[0].path
-          value: /
-        - name: ingress.hosts[0].paths[0].pathType
-          value: Prefix
-        - name: ingress.annotations.nginx.ingress.kubernetes.io/rewrite-target
-          value: /
+      # parameters:
+      #   - name: service.type
+      #     value: ClusterIP
+      #   - name: ingress.enabled
+      #     value: "true"
+      #   - name: ingress.hosts[0].host
+      #     value: mage.local
+      #   - name: ingress.hosts[0].paths[0].path
+      #     value: /
+      #   - name: ingress.hosts[0].paths[0].pathType
+      #     value: Prefix
+      #   - name: ingress.annotations.nginx.ingress.kubernetes.io/rewrite-target
+      #     value: /
 
   destination:
     server: https://kubernetes.default.svc  # This points to the in-cluster Kubernetes API
