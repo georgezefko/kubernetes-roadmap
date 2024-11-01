@@ -65,7 +65,7 @@ redis:
 
 image:
   repository: mage #mageai/mageai
-  pullPolicy: Always
+  pullPolicy: IfNotPresent #Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: kube #0.9.74
 
