@@ -64,10 +64,10 @@ redis:
   customRedisURL: ""
 
 image:
-  repository: mageai/mageai
+  repository: mage #mageai/mageai
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 0.9.74
+  tag: kube #0.9.74
 
 imagePullSecrets: []
 nameOverride: "mageai"
