@@ -64,12 +64,12 @@ redis:
   customRedisURL: ""
 
 image:
-  repository: mage #mageai/mageai
+  repository: ghcr.io/zefko/mage-projects
   pullPolicy: IfNotPresent #Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: kube #0.9.74
+  tag: 1.1.0
 
-imagePullSecrets: []
+imagePullSecrets: [ghcr-secret]
 nameOverride: "mageai"
 fullnameOverride: "mageai"
 
@@ -143,7 +143,7 @@ customReadinessProbe: {}
 # There is a corresponding Mage-Ingress chart to create an ingress for Mage if needed.
 # This section is kept here for backwards compatibility.
 ingress:
-  enabled: false
+  enabled: true
   className: nginx
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
@@ -151,7 +151,7 @@ ingress:
     kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: mage.local  # Replace with your desired hostname
+    - host: mage.dev.com  # Replace with your desired hostname
       paths:
         - path: /
           pathType: Prefix
