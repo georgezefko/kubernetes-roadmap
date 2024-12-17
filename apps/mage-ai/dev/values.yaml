@@ -64,7 +64,7 @@ redis:
   customRedisURL: ""
 
 image:
-  repository: ghcr.io/zefko/mage-projects
+  repository: ghcr.io/georgezefko/mage-projects
   pullPolicy: IfNotPresent #Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: 1.1.0
