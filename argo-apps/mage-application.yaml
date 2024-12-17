@@ -7,9 +7,12 @@ spec:
   project: default
 
   source:
-    repoURL: https://mage-ai.github.io/helm-charts  # Direct link to the Mage AI Helm chart repo
-    chart: mageai
-    targetRevision: 0.2.6  # Version of the Mage AI chart
+    repoURL: 'https://github.com/georgezefko/kubernetes-roadmap.git'
+    targetRevision: HEAD
+    path: apps/mage-ai/dev
+    # repoURL: https://mage-ai.github.io/helm-charts  # Direct link to the Mage AI Helm chart repo
+    # chart: mageai
+    # targetRevision: 0.2.6  # Version of the Mage AI chart
     helm:
       valueFiles:
         - https://raw.githubusercontent.com/georgezefko/kubernetes-roadmap/main/apps/mage-ai/dev/values.yaml
