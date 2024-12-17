@@ -89,3 +89,24 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 kubectl port-forward svc/mageai -n develop 6789:6789
 ###install ingress
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+
+kubectl create secret docker-registry regcred \
+  --docker-server=https://index.docker.io/v1/ \
+  --docker-username=your-dockerhub-username \
+  --docker-password=your-dockerhub-password \
+  --docker-email=your-email@example.com
+
+  kubectl create secret docker-registry ghcr-secret \
+  --docker-server=ghcr.io \
+  --docker-username=your-github-username \
+  --docker-password=your-personal-access-token \
+  --docker-email=your-email@example.com
+
+imagePullSecrets:
+  - name: regcred  # or ghcr-secret for GitHub
+
+image:
+  repository: your-dockerhub-username/your-image-name  # For Docker Hub
+  # repository: ghcr.io/your-github-username/your-image-name  # For GitHub Container Registry
+  pullPolicy: IfNotPresent
+  tag: your-image-tag

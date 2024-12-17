@@ -7,6 +7,8 @@ metadata:
     # Enable SSL redirection
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    # Disable SSL redirection since we're not using TLS
+    #nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   ingressClassName: nginx  # Specify the Ingress controller if required
   rules:
