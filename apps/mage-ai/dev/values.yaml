@@ -68,8 +68,10 @@ image:
   pullPolicy: IfNotPresent #Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: 1.1.0
+  pullSecrets:
+    - name: ghcr-secret
 
-imagePullSecrets: ghcr-secret
+#imagePullSecrets: ghcr-secret
 nameOverride: "mageai"
 fullnameOverride: "mageai"
 
