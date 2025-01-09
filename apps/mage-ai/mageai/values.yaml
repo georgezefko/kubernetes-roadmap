@@ -64,14 +64,12 @@ redis:
   customRedisURL: ""
 
 image:
-  repository: docker.io/zefko/mage_projects #ghcr.io/georgezefko/mage-projects
-  pullPolicy: IfNotPresent #Always
+  repository: mageai/mageai
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 1.1.0
-  pullSecrets:
-   - name: regcred #ghcr-secret
+  tag: ""
 
-#imagePullSecrets: ghcr-secret
+imagePullSecrets: []
 nameOverride: "mageai"
 fullnameOverride: "mageai"
 
@@ -98,7 +96,7 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
   port: 6789
   # Annotations to add to the service
   annotations: {}
@@ -145,19 +143,17 @@ customReadinessProbe: {}
 # There is a corresponding Mage-Ingress chart to create an ingress for Mage if needed.
 # This section is kept here for backwards compatibility.
 ingress:
-  enabled: true
-  className: nginx
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    # Uncomment below if you have multiple ingress classes or need TLS with ACME
-    kubernetes.io/ingress.class: nginx
+  enabled: false
+  className: ""
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: mage.dev.com  # Replace with your desired hostname
+    - host: chart-example.local
       paths:
         - path: /
-          pathType: Prefix
-  tls: []  # Optional: configure for HTTPS, leave empty if not needed
+          pathType: ImplementationSpecific
+  tls: []
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
@@ -207,7 +203,7 @@ existingSecret: ""
 # Consider using a secret manager first, before sourcing secrets as environment variables.
 secrets: {}
 
-# extraEnvs: Extra environment variable
+# extraEnvs: Extra environment variables
 extraEnvs:
   - name: KUBE_NAMESPACE
     valueFrom:
