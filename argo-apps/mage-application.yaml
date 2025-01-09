@@ -18,10 +18,9 @@ spec:
       repoURL: "https://mage-ai.github.io/helm-charts"
       chart: "mageai"
       version: "0.2.6"
-
       # Overlay the local values.yaml stored in your GitHub repo
       valueFiles:
-        - "apps/mage-ai/dev/values.yaml"
+        - "https://raw.githubusercontent.com/georgezefko/kubernetes-roadmap/main/apps/mage-ai/dev/values.yaml"
 
   destination:
     server: "https://kubernetes.default.svc"
