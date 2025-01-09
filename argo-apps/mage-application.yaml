@@ -1,37 +1,3 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: mage-ai
-  namespace: argocd
-spec:
-  project: default
-  source:
-    # Pulls only the values.yaml from this GitHub repo
-    repoURL: "https://github.com/georgezefko/kubernetes-roadmap.git"
-    targetRevision: HEAD
-    
-    # Remove 'path:' so Argo does NOT try to find Chart.yaml locally
-    # path: NOT USED HERE
-
-    helm:
-      # Instead, fetch the remote Mage chart from its official repo
-      repoURL: "https://mage-ai.github.io/helm-charts"
-      chart: "mageai"
-      version: "0.2.6"
-      # Overlay the local values.yaml stored in your GitHub repo
-      valueFiles:
-        - "https://raw.githubusercontent.com/georgezefko/kubernetes-roadmap/main/apps/mage-ai/dev/values.yaml"
-
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: "develop"
-
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-
-
 # apiVersion: argoproj.io/v1alpha1
 # kind: Application
 # metadata:
@@ -39,25 +5,59 @@ spec:
 #   namespace: argocd
 # spec:
 #   project: default
-
 #   source:
-#     repoURL: 'https://github.com/georgezefko/kubernetes-roadmap.git'
+#     # Pulls only the values.yaml from this GitHub repo
+#     repoURL: "https://github.com/georgezefko/kubernetes-roadmap.git"
 #     targetRevision: HEAD
-#     path: apps/mage-ai/dev
-#     # repoURL: https://mage-ai.github.io/helm-charts  # Direct link to the Mage AI Helm chart repo
-#     # chart: mageai
-#     # targetRevision: 0.2.6  # Version of the Mage AI chart
+    
+#     # Remove 'path:' so Argo does NOT try to find Chart.yaml locally
+#     # path: NOT USED HERE
+
 #     helm:
+#       # Instead, fetch the remote Mage chart from its official repo
+#       repoURL: "https://mage-ai.github.io/helm-charts"
+#       chart: "mageai"
+#       version: "0.2.6"
+#       # Overlay the local values.yaml stored in your GitHub repo
 #       valueFiles:
-#         - https://raw.githubusercontent.com/georgezefko/kubernetes-roadmap/main/apps/mage-ai/dev/values.yaml
-#       repoURL: https://mage-ai.github.io/helm-charts  # Direct link to the Mage AI Helm chart repo
-#       chart: mageai
-#       targetRevision: 0.2.6  # Version of the Mage AI chart
+#         - "https://raw.githubusercontent.com/georgezefko/kubernetes-roadmap/main/apps/mage-ai/dev/values.yaml"
+
 #   destination:
-#     server: https://kubernetes.default.svc
-#     namespace: develop
+#     server: "https://kubernetes.default.svc"
+#     namespace: "develop"
 
 #   syncPolicy:
 #     automated:
 #       prune: true
 #       selfHeal: true
+
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mage-ai
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: 'https://github.com/georgezefko/kubernetes-roadmap.git'
+    targetRevision: HEAD
+    path: apps/mage-ai/dev
+    repoURL: https://mage-ai.github.io/helm-charts  # Direct link to the Mage AI Helm chart repo
+    chart: mageai
+    targetRevision: 0.2.6  # Version of the Mage AI chart
+    helm:
+      valueFiles:
+        - https://raw.githubusercontent.com/georgezefko/kubernetes-roadmap/main/apps/mage-ai/dev/values.yaml
+      repoURL: https://mage-ai.github.io/helm-charts  # Direct link to the Mage AI Helm chart repo
+      chart: mageai
+      targetRevision: 0.2.6  # Version of the Mage AI chart
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: develop
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
