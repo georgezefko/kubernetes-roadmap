@@ -64,12 +64,12 @@ redis:
   customRedisURL: ""
 
 image:
-  repository: ghcr.io/georgezefko/mage-projects
+  repository: docker.io/zefko/mage-projects #ghcr.io/georgezefko/mage-projects
   pullPolicy: IfNotPresent #Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: 1.1.0
-  pullSecrets:
-    - name: ghcr-secret
+  #pullSecrets:
+  #  - name: ghcr-secret
 
 #imagePullSecrets: ghcr-secret
 nameOverride: "mageai"

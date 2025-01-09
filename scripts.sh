@@ -94,13 +94,15 @@ kubectl create secret docker-registry regcred \
   --docker-server=https://index.docker.io/v1/ \
   --docker-username=your-dockerhub-username \
   --docker-password=your-dockerhub-password \
-  --docker-email=your-email@example.com
+  --docker-email=your-email@example.com \
+  --namespace=develop
 
   kubectl create secret docker-registry ghcr-secret \
   --docker-server=ghcr.io \
   --docker-username=your-github-username \
   --docker-password=your-personal-access-token \
-  --docker-email=your-email@example.com
+  --docker-email=your-email@example.com \
+   --namespace=develop
 
 imagePullSecrets:
   - name: regcred  # or ghcr-secret for GitHub
