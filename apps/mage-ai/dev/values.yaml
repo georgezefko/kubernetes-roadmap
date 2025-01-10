@@ -67,7 +67,7 @@ image:
   repository: docker.io/zefko/mage_projects #ghcr.io/georgezefko/mage-projects
   pullPolicy: IfNotPresent #Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 1.1.0
+  tag: 1.1.4
   pullSecrets:
    - name: regcred #ghcr-secret
 
