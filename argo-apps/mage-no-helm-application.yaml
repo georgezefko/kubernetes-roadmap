@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: 'https://github.com/georgezefko/kubernetes-roadmap.git'
     targetRevision: HEAD
-    path: apps/mage-ai-no-helm/dev     
+    path: apps/mage-ai-no-helm/dev
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: develop

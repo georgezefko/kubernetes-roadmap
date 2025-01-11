@@ -15,12 +15,11 @@ spec:
       labels:
         app: mageai
     spec:
-      # Add the following imagePullSecrets section
       imagePullSecrets:
-        - name: regcred   # This secret must exist in the 'develop' namespace
+        - name: regcred
       containers:
         - name: mageai
-          image: docker.io/zefko/mage_projects:1.1.4
+          image: docker.io/zefko/mage_projects:1.1.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 6789
