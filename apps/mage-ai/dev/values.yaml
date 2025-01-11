@@ -157,6 +157,11 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
+          backend:
+              service:
+                name: mageai
+                port:
+                  number: 6789
   tls: []  # Optional: configure for HTTPS, leave empty if not needed
   #  - secretName: chart-example-tls
   #    hosts:
