@@ -2,18 +2,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kafka-app
+  name: mageai
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: 'https://github.com/georgezefko/kubernetes-roadmap.git'
-    targetRevision: HEAD  # Use the branch or commit you want ArgoCD to track
-    path: apps/mage-ai-no-helm/dev       # Path to the dev folder in the Kafka component
+    targetRevision: HEAD
+    path: apps/mage-ai-no-helm/dev     
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: develop   # Namespace where Kafka will be deployed
+    namespace: develop
   syncPolicy:
     automated:
-      prune: true        # Optionally, ArgoCD can prune resources that are not in Git
-      selfHeal: true     # Optionally, ArgoCD can auto-heal resources that drift
+      prune: true   
+      selfHeal: true 
