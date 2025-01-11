@@ -19,7 +19,7 @@ spec:
         - name: regcred
       containers:
         - name: mageai
-          image: docker.io/zefko/mage_projects:1.1.0
+          image: docker.io/zefko/mage_projects:1.1.4
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 6789
